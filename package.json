@@ -1,0 +1,8 @@
+{
+  "name": "@isa-components/neon-glass",
+  "private": true,
+  "description": "Superficies glass neon tech reutilizables (MUI + CDN). Sin glow en light mode.",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

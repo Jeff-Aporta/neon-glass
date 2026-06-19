@@ -1,0 +1,33 @@
+{
+  "builtAt": "2026-06-19T23:29:55.817Z",
+  "kind": "component-demo",
+  "demoRoot": "..\\..\\..\\components\\neon-glass\\demo",
+  "files": 4,
+  "bytesIn": 3846,
+  "bytesOut": 15795,
+  "ratio": 4.107,
+  "hash": "6f573a4f2672",
+  "appBundle": "_dist/app.min.js",
+  "entries": [
+    {
+      "rel": "js\\app\\main.jsx",
+      "bytesIn": 1973,
+      "bytesOut": 14481
+    },
+    {
+      "rel": "css/demo.css",
+      "bytesIn": 126,
+      "bytesOut": 91
+    },
+    {
+      "rel": "js/boot/loader.mjs",
+      "bytesIn": 1501,
+      "bytesOut": 1025
+    },
+    {
+      "rel": "js/boot/cdn.mjs",
+      "bytesIn": 246,
+      "bytesOut": 198
+    }
+  ]
+}

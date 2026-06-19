@@ -1,0 +1,145 @@
+/**
+ * @isa-components/neon-glass — tokens + utilidades CSS.
+ * Complementa sx de MUI; dark = neon glow, light = glass limpio.
+ */
+
+:root {
+  --isa-glass-neon-blue: #1e90ff;
+  --isa-glass-neon-cyan: #00e5ff;
+  --isa-glass-neon-purple: #6366f1;
+  --isa-glass-glow-blue: rgba(30, 144, 255, 0.45);
+  --isa-glass-mesh-dark:
+    radial-gradient(ellipse 90% 55% at 15% -8%, rgba(99, 102, 241, 0.22), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 92% 5%, rgba(0, 229, 255, 0.1), transparent 48%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(30, 144, 255, 0.08), transparent 55%);
+  --isa-glass-mesh-light:
+    radial-gradient(ellipse 90% 55% at 15% -8%, rgba(30, 144, 255, 0.14), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 92% 5%, rgba(99, 102, 241, 0.08), transparent 48%);
+  --isa-glass-body-dark:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(99, 102, 241, 0.18), transparent 55%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  --isa-glass-body-light:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(30, 144, 255, 0.12), transparent 55%),
+    linear-gradient(180deg, #f0f6ff 0%, #f8fafc 100%);
+  --isa-glass-radius: 0.75rem;
+}
+
+@keyframes isa-glass-neon-pulse {
+  0%, 100% { opacity: 0.55; filter: blur(40px); }
+  50% { opacity: 0.85; filter: blur(48px); }
+}
+
+/* Mesh layout */
+.isa-glass-mesh-root {
+  position: relative;
+  isolation: isolate;
+  min-height: 100%;
+}
+
+.isa-glass-mesh-root--orbs::before,
+.isa-glass-mesh-root--orbs::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: isa-glass-neon-pulse 8s ease-in-out infinite;
+}
+
+.isa-glass-mesh-root--orbs::before {
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 68%);
+}
+
+.isa-glass-mesh-root--orbs::after {
+  width: min(420px, 60vw);
+  height: min(420px, 60vw);
+  bottom: -100px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.28), transparent 68%);
+  animation-delay: -4s;
+}
+
+html[data-mui-color-scheme="light"] .isa-glass-mesh-root--orbs::before,
+html[data-mui-color-scheme="light"] .isa-glass-mesh-root--orbs::after {
+  display: none;
+}
+
+.isa-glass-mesh-body {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+}
+
+/* Fondo de página: ver neon-glass-page.css (.isa-glass-page-surface) */
+
+/* Alias utilitario — compatible con swagger .isa-sw-glass */
+.isa-glass-surface,
+.isa-glass-card,
+.isa-glass-panel,
+.isa-glass-section,
+.isa-glass-toolbar,
+.isa-glass-table-wrap,
+.isa-sw-glass {
+  border-radius: var(--isa-glass-radius);
+}
+
+html[data-mui-color-scheme="dark"] .isa-glass-surface,
+html.dark-mode .isa-glass-surface,
+html[data-mui-color-scheme="dark"] .isa-glass-card,
+html.dark-mode .isa-glass-card,
+html[data-mui-color-scheme="dark"] .isa-glass-panel,
+html.dark-mode .isa-glass-panel,
+html[data-mui-color-scheme="dark"] .isa-glass-section,
+html.dark-mode .isa-glass-section,
+html[data-mui-color-scheme="dark"] .isa-glass-toolbar,
+html.dark-mode .isa-glass-toolbar,
+html[data-mui-color-scheme="dark"] .isa-glass-table-wrap,
+html.dark-mode .isa-glass-table-wrap,
+html[data-mui-color-scheme="dark"] .isa-sw-glass,
+html.dark-mode .isa-sw-glass {
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+html[data-mui-color-scheme="light"] .isa-glass-surface,
+html[data-mui-color-scheme="light"] .isa-glass-card,
+html[data-mui-color-scheme="light"] .isa-glass-panel,
+html[data-mui-color-scheme="light"] .isa-glass-section,
+html[data-mui-color-scheme="light"] .isa-glass-toolbar,
+html[data-mui-color-scheme="light"] .isa-glass-table-wrap,
+html[data-mui-color-scheme="light"] .isa-sw-glass {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Tablas dentro de glass */
+.isa-glass-table-wrap .MuiTableHead-root .MuiTableCell-root {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+html[data-mui-color-scheme="dark"] .isa-glass-table-wrap .MuiTableHead-root .MuiTableCell-root,
+html.dark-mode .isa-glass-table-wrap .MuiTableHead-root .MuiTableCell-root {
+  color: rgba(226, 232, 240, 0.92);
+  background: linear-gradient(180deg, rgba(15, 34, 54, 0.95), rgba(11, 18, 32, 0.88));
+  border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+}
+
+html[data-mui-color-scheme="light"] .isa-glass-table-wrap .MuiTableHead-root .MuiTableCell-root {
+  color: rgba(15, 23, 42, 0.82);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 247, 255, 0.92));
+  border-bottom: 1px solid rgba(30, 144, 255, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .isa-glass-mesh-root--orbs::before,
+  .isa-glass-mesh-root--orbs::after {
+    animation: none;
+  }
+}
