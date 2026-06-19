@@ -1,4 +1,9 @@
 {
-  "package": "@isa-components/neon-glass",
-  "builtAt": "2026-06-19T23:29:55.776Z"
+  "componentId": "neon-glass",
+  "slug": "neon-glass",
+  "repo": "Jeff-Aporta/neon-glass",
+  "cdnPath": "cdn",
+  "componentRef": "76831ac",
+  "refExport": "NEON_GLASS_REF",
+  "note": "Pin jsDelivr neon-glass@componentRef. Actualizar con sync-component-refs.mjs --from-git --component neon-glass"
 }

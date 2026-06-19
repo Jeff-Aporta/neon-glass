@@ -43,11 +43,21 @@ function build() {
   });
 
   writeFileSync(OUT_CSS, minifyCss(readFileSync(CSS_PAGE, "utf8") + readFileSync(CSS_MAIN, "utf8")), "utf8");
-  writeFileSync(
-    join(CDN_DIR, "versions.json"),
-    JSON.stringify({ package: "@isa-components/neon-glass", builtAt: new Date().toISOString() }, null, 2),
-    "utf8",
-  );
+  const versionsPath = join(CDN_DIR, "versions.json");
+  let versions = {
+    componentId: "neon-glass",
+    slug: "neon-glass",
+    repo: "Jeff-Aporta/neon-glass",
+    cdnPath: "cdn",
+    componentRef: "main",
+    refExport: "NEON_GLASS_REF",
+    note: "Pin jsDelivr neon-glass@componentRef. Actualizar con sync-component-refs.mjs --from-git --component neon-glass",
+  };
+  try {
+    versions = { ...versions, ...JSON.parse(readFileSync(versionsPath, "utf8")) };
+  } catch { /* first build */ }
+  versions.builtAt = new Date().toISOString();
+  writeFileSync(versionsPath, JSON.stringify(versions, null, 2) + "\n", "utf8");
 
   console.log("neon-glass build OK");
   console.log("  ", OUT_JS);
