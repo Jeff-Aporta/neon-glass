@@ -3,7 +3,7 @@
   "slug": "neon-glass",
   "repo": "Jeff-Aporta/neon-glass",
   "cdnPath": "cdn",
-  "componentRef": "76831ac",
+  "componentRef": "0893934",
   "refExport": "NEON_GLASS_REF",
   "note": "Pin jsDelivr neon-glass@componentRef. Actualizar con sync-component-refs.mjs --from-git --component neon-glass"
 }
